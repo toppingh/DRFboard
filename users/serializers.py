@@ -7,6 +7,13 @@ from rest_framework.validators import UniqueValidator
 
 from django.contrib.auth import authenticate
 
+from .models import Profile
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ("nickname", "position", "subjects", "image")
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True, write_only=True)
